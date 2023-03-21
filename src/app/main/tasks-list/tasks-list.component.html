@@ -1,0 +1,27 @@
+<div class="card">
+  <p-table [value]="tasks" [scrollable]="true" scrollHeight="400px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width:400px">title</th>
+        <th style="min-width:100px">edit</th>
+        <th style="min-width:100px">delete</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-task of tasks>
+      <tr>
+        <td style="min-width:100px">
+
+          <a title={{task.title}}> {{task.title}} </a>
+        </td>
+        <td style="min-width:100px">
+          <fa-icon class="edit fa-lg" title="edit" role="button" (click)="viewTaskDetails(task)"
+            [icon]="faPenToSquare"></fa-icon>
+        </td>
+        <td style="min-width:100px">
+          <fa-icon class="trash fa-lg" title="delete" role="button" (click)="removeTask(task)"
+            [icon]="faTrash"></fa-icon>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

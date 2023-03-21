@@ -1,0 +1,104 @@
+<!-- Toast is used to display messages in an overlay. -->
+<p-toast></p-toast>
+
+<div class="card">
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+        (click)="openNew()"></button>
+      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"
+        (click)="deleteSelectedProducts()" [disabled]="!selectedTasks || !selectedTasks.length"></button>
+    </ng-template>
+
+
+  </p-toolbar>
+
+
+  <p-table #dt [value]="tasks" [rows]="10" [paginator]="true" [globalFilterFields]="['title']"
+    [(selection)]="selectedTasks" [rowHover]="true" dataKey="_id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Manage tasks</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <!--  Table filterGlobal TS2339: Property 'value' does not exist on type 'EventTarget' -->
+          <input pInputText type="text" placeholder="Search..."
+            (input)="dt.filterGlobal($event.target?.value, 'contains')" />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
+
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th>Options</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-task of tasks>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="task"></p-tableCheckbox>
+        </td>
+        <td class="">{{task.title}}
+
+        </td>
+
+
+        <td>
+          <ng-container *ngIf="task.status=='completed'">
+            <span class="status completed">{{task.status}}</span>
+          </ng-container>
+          <ng-container *ngIf="task.status==='waiting'">
+            <span class="status waiting">{{task.status}}</span>
+          </ng-container>
+        </td>
+        <td>
+
+          <button pButton pRipple icon=" pi pi-pencil" class="p-button-rounded p-button-primary m-1"
+            (click)="editProduct(task)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning m-1"
+            (click)="deleteProduct(task)"></button>
+          <ng-container *ngIf="task?.status!=='completed'">
+            <button pButton pRipple icon="pi pi-check-circle" class="p-button-rounded p-button-success m-1"
+              (click)="completed(task)"></button>
+          </ng-container>
+
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{tasks ? tasks.length : 0 }} tasks.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="taskDialog" [style]="{width: '450px'}" header="tasks list" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="title">Name</label>
+      <input type="text" pInputText id="title" [(ngModel)]="task.title" required autofocus />
+      <small class="p-invalid" *ngIf="submitted && !task.title">Name is required.</small>
+    </div>
+    <div class="p-field">
+      <label for="description">Description</label>
+      <textarea id="description" pInputTextarea [(ngModel)]="task.description" required rows="3" cols="20"></textarea>
+      <small class="p-invalid" *ngIf="submitted && !task.description">Description is required.</small>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+<p-toast key="completed" position="bottom-center"></p-toast>

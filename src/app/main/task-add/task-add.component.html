@@ -1,0 +1,21 @@
+<div [formGroup]="taskForm" class="">
+
+  <div class="flex flex-column card-container">
+    <div class="flex align-items-center justify-content-center m-4">
+      <span class="p-float-label">
+        <input id="float-input" type="text" pInputText formControlName="title">
+        <label for="float-input">Title</label>
+      </span>
+    </div>
+    <div class="flex align-items-center justify-content-center m-4">
+      <span class="p-float-label">
+        <input id="float-input" type="text" pInputText formControlName="description">
+        <label for="float-input">Description</label>
+      </span>
+    </div>
+    <div class="flex align-items-center justify-content-center"><button pButton type="button" label="Add"
+        (click)="addTask()" [disabled]="taskForm.invalid"></button></div>
+
+  </div>
+
+</div>

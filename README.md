@@ -1,27 +1,21 @@
-# Todo
+# Table CRUD with PrimeNG integration
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+This project is a simple integration between Angular, PrimeNG, and the CRUD API service provided by [crudcrud.com](https://crudcrud.com). It is intended for educational purposes only.
 
-## Development server
+## Functionality
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Table CRUD with PrimeNG integration allows users to perform CRUD operations (Create, Read, Update, and Delete) on a table of to-do items. The table displays the item's description and status, and users can edit or delete items directly from the table.
 
-## Code scaffolding
+## API Key
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To use this project, you will need an API key from [crudcrud.com](https://crudcrud.com). If you have exhausted the list of requests for your current key, you will need to obtain a new key. To do so, open a new incognito window in your browser and navigate to [crudcrud.com](https://crudcrud.com). Generate a new API key, and copy it to the `apiKey` variable in the `api/todo.service.ts` file.
 
-## Build
+## Running the project
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run this project, you will need to have [Node.js](https://nodejs.org) installed on your machine.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone the project repository to your local machine.
+2. Open a terminal and navigate to the project directory.
+3. Run the command `npm install` to install the project's dependencies.
+4. Once the dependencies are installed, run the command `ng serve` to start the development server.
+5. Navigate to **`http://localhost:4200/crud`** in your web browser to view the project.
