@@ -171,8 +171,6 @@ export class TaskCrudComponent implements OnInit {
     const updatedTask = { ...task, status: TaskStatus.COMPLETED };
     const { _id, ...rest } = updatedTask;
 
-    console.log(task);
-    // const { _id, ...rest } = task;
     this.todosService
       .update(rest, task._id)
       .pipe(
@@ -191,16 +189,5 @@ export class TaskCrudComponent implements OnInit {
         })
       )
       .subscribe();
-
-    // this.tasks[task._id] = { task };
-    console.log(this.tasks);
-  }
-  //todo delete
-  logEvent(event: any) {
-    console.log('event ', event);
-  }
-  handleClick(task: any) {
-    console.log('task:', task);
-    console.log('selectedProducts', this.selectedTasks);
   }
 }
