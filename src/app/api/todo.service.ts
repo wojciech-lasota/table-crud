@@ -7,7 +7,7 @@ import { ITask } from './task';
   providedIn: 'root',
 })
 export class TodosService implements OnInit {
-  private apiKey = '4abb7115e658468e9cb4d66adc5e5ddb';
+  private apiKey = '312d0350cdf84cecaca47b4e77c76f89';
   private apiURL = 'https://crudcrud.com/api/' + this.apiKey;
 
   httpOptions = {
