@@ -18,4 +18,4 @@ To run this project, you will need to have [Node.js](https://nodejs.org) install
 2. Open a terminal and navigate to the project directory.
 3. Run the command `npm install` to install the project's dependencies.
 4. Once the dependencies are installed, run the command `ng serve` to start the development server.
-5. Navigate to `http://localhost:4200` in your web browser to view the project.
+5. Navigate to **`http://localhost:4200/crud`** in your web browser to view the project.
